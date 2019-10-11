@@ -1,0 +1,17 @@
+version: '3'
+services:
+  # edit .env file
+  web:
+    container_name: internal-${HOST_NAME}
+    hostname: internal-${HOST_NAME}
+    build: '.'
+    volumes:
+      - ../public_html/${HOST_NAME}:/home/public_html:rw
+      - ../shared_socket/${HOST_NAME}:/home/shared_socket:rw
+    environment:
+      - HOST_NAME=${HOST_NAME}
+    restart: always
+networks:
+  default:
+    external:
+      name: nginx-proxy

@@ -1,0 +1,17 @@
+version: '3'
+services:
+  nginx:
+    build: '.'
+    container_name: nginx-proxy
+    hostname: nginx-proxy
+    volumes:
+      - ../public_html:/home/public_html:ro
+      - ../shared_socket:/home/shared_socket:rw
+      - ./conf.d:/etc/nginx/conf.d:rw
+    ports:
+      - 80:80
+    restart: always
+networks:
+  default:
+    external:
+      name: nginx-proxy
