@@ -16,7 +16,7 @@ services:
     hostname: internal-redis-${HOST_NAME}
     build: './redis'
     volumes:
-      - ./redis-data:/var/lib/redis:rw
+      - ./redis-data:/data:rw
     restart: unless-stopped # always
   mysql-mariadb:
     hostname: internal-mysql-${HOST_NAME}
