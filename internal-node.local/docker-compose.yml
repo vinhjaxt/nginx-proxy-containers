@@ -10,7 +10,7 @@ services:
       - ../shared_socket/${HOST_NAME}:/home/shared_socket:rw
     environment:
       - HOST_NAME=${HOST_NAME}
-    restart: always
+    restart: unless-stopped # always
 networks:
   default:
     external:

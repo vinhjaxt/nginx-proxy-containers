@@ -10,7 +10,22 @@ services:
       - ../shared_socket/${HOST_NAME}:/home/shared_socket:rw
     environment:
       - HOST_NAME=${HOST_NAME}
-    restart: always
+    restart: unless-stopped # always
+  redis:
+    container_name: internal-redis-${HOST_NAME}
+    hostname: internal-redis-${HOST_NAME}
+    build: './redis'
+    volumes:
+      - ./redis-data:/var/lib/redis:rw
+    restart: unless-stopped # always
+  mysql-mariadb:
+    hostname: internal-mysql-${HOST_NAME}
+    container_name: internal-mysql-${HOST_NAME}
+    build: './mysql'
+    env_file: ./.env
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+    restart: unless-stopped # always
 networks:
   default:
     external:

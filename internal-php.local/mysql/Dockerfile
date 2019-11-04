@@ -1,0 +1,1 @@
+FROM yobasystems/alpine-mariadb

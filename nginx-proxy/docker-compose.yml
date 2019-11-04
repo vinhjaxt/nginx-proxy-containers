@@ -10,7 +10,7 @@ services:
       - ./conf.d:/etc/nginx/conf.d:rw
     ports:
       - 80:80
-    restart: always
+    restart: always # unless-stopped
 networks:
   default:
     external:
