@@ -14,3 +14,8 @@ Internet ---------> Nginx (docker) --------> php-fpm (docker)
 1. Vào thư mục nginx-proxy: `docker-compose build && docker-compose up`
 2. Vào thư mục internal-php.local: `docker-compose build && docker-compose up`
 2. Vào thư mục internal-node.local: `docker-compose build && docker-compose up`
+
+```bash
+curl --resolve php.local:80:127.0.0.1 http://php.local/
+curl --resolve node.local:80:127.0.0.1 http://node.local/
+```
