@@ -148,8 +148,8 @@ Tương tự, copy `internal-node.local` và file cấu hình cũng như thư m�
 Bạn có thể chmod `./public_html/[hostname]` hoặc `docker exec` rồi chmod `/home/public_html` trong container
 
 # Kết
-Hãy đọc các tệp docker-compose.yml trong `internal-php.local` và `internal-node.local` để hiểu hơn về cấu trúc.
+Hãy đọc các tệp `docker-compose.yml` trong `internal-php.local` và `internal-node.local` để hiểu hơn về cấu trúc.
 
-Nếu bạn thấy có gì sai sai, cứ tạo một pull request để fix lại vấn đề đó. Cảm ơn bạn!
+Nếu bạn thấy có gì sai sai, cứ tạo một issue, pull request để fix lại vấn đề đó. Cảm ơn bạn!
 
 @vinhjaxt
