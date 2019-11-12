@@ -7,9 +7,22 @@ services:
     build: '.'
     volumes:
       - ../public_html/${HOST_NAME}:/home/public_html:rw
-      - ../shared_socket/${HOST_NAME}:/home/shared_socket:rw
+      - ../run/main/${HOST_NAME}:/home/run:rw
+      - ../run/${HOST_NAME}/postgresql:/run/postgresql:rw
     environment:
       - HOST_NAME=${HOST_NAME}
+    restart: unless-stopped # always
+  postgresql:
+    container_name: internal-postgresql-${HOST_NAME}
+    hostname: internal-postgresql-${HOST_NAME}
+    build: './postgresql'
+    volumes:
+      - ../data/${HOST_NAME}/postgresql:/var/lib/postgresql/data:rw
+      - ../run/${HOST_NAME}/postgresql:/run/postgresql:rw
+    environment:
+      - POSTGRES_PASSWORD=postgresql_password
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=default-db
     restart: unless-stopped # always
 networks:
   default:

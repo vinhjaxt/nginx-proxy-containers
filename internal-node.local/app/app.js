@@ -1,5 +1,5 @@
 const fs = require('fs')
-const unixSocket = '/home/shared_socket/unix.sock'
+const unixSocket = '/home/run/unix.sock'
 const http = require('http')
 const server = http.createServer((req, res) => {
   res.statusCode = 200

@@ -6,7 +6,7 @@ services:
     hostname: nginx-proxy
     volumes:
       - ../public_html:/home/public_html:ro
-      - ../shared_socket:/home/shared_socket:rw
+      - ../run/main:/home/run:rw
       - ./conf.d:/etc/nginx/conf.d:rw
     ports:
       - 80:80
