@@ -24,7 +24,9 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_DB=default-db
     restart: unless-stopped # always
+    networks:
+      - pgadmin
 networks:
-  default:
+  pgadmin:
     external:
-      name: nginx-proxy
+      name: pgadmin

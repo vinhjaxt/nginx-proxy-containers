@@ -30,7 +30,9 @@ services:
       - ../data/${HOST_NAME}/mysql:/var/lib/mysql
       - ../run/${HOST_NAME}/mysqld:/var/run/mysqld
     restart: unless-stopped # always
+    networks:
+      - phpmyadmin
 networks:
-  default:
+  phpmyadmin:
     external:
-      name: nginx-proxy
+      name: phpmyadmin
