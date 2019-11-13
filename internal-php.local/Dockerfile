@@ -11,7 +11,7 @@ RUN docker-php-ext-install pdo && docker-php-ext-enable pdo
 RUN set -ex \
   && apk --no-cache add \
     postgresql-dev
-RUN docker-php-ext-install pgsql pdo_pgsql && docker-php-ext-enable pgsql pdo_p>
+RUN docker-php-ext-install pgsql pdo_pgsql && docker-php-ext-enable pgsql pdo_pgsql
 
 RUN rm -rf /tmp/pear
 
