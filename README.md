@@ -12,8 +12,11 @@ Internet ---------> Nginx (docker-container) --------> php-fpm (docker-container
 
 # Sử dụng nhanh
 Tạo nginx-proxy network: `docker network create nginx-proxy`
+
 Tạo pgadmin network: `docker network create pgadmin` (được sử dụng để kết nối internal-pgadmin.local với postgresql của node.local cho việc quản lý postgresql nếu muốn)
+
 Tạo phpmyadmin network: `docker network create phpmyadmin` (tương tự với mysql và php.local)
+
 1. Vào thư mục `nginx-proxy`:
  - build: `docker-compose build`
  - start nginx: `docker-compose up -d`
