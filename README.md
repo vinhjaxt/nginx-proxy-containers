@@ -11,7 +11,9 @@ Internet ---------> Nginx (docker-container) --------> php-fpm (docker-container
 - hostname được đặt ở file `.env` của `internal-php.local` và `internal-node.local`
 
 # Sử dụng nhanh
-Tạo network: `docker network create nginx-proxy`
+Tạo nginx-proxy network: `docker network create nginx-proxy`
+Tạo pgadmin network: `docker network create pgadmin` (được sử dụng để kết nối internal-pgadmin.local với postgresql của node.local cho việc quản lý postgresql nếu muốn)
+Tạo phpmyadmin network: `docker network create phpmyadmin` (tương tự với mysql và php.local)
 1. Vào thư mục `nginx-proxy`:
  - build: `docker-compose build`
  - start nginx: `docker-compose up -d`
@@ -131,9 +133,10 @@ sed -i 's/php.local/example.com/g' internal-example.com/.env nginx-proxy/conf.d/
 docker-compose build
 docker-compose up
 ```
-4. Restart nginx
+4. Restart nginx: vào thư mục `nginx-proxy`
 ```bash
-docker restart nginx-proxy
+docker-compose stop
+docker-compose up -d
 ```
 
 # Làm thế nào để thêm nhanh một website nodejs với postgresql?

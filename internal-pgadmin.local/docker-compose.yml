@@ -1,0 +1,21 @@
+version: '3'
+services:
+  # edit .env file
+  web:
+    container_name: internal-${HOST_NAME}
+    hostname: internal-${HOST_NAME}
+    image: dpage/pgadmin4
+    restart: unless-stopped
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=your_email@your_domain.com
+      - PGADMIN_DEFAULT_PASSWORD=your_password
+    networks:
+      - pgadmin
+      - nginx
+networks:
+  nginx:
+    external:
+      name: nginx-proxy
+  pgadmin:
+    external:
+      name: pgadmin
