@@ -5,6 +5,8 @@ RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 RUN pecl install -o -f redis \
   &&  docker-php-ext-enable redis
 
+RUN set -ex \
+  && apk --no-cache add oniguruma-dev
 RUN docker-php-ext-install mbstring && docker-php-ext-enable mbstring
 
 RUN docker-php-ext-install pdo && docker-php-ext-enable pdo
