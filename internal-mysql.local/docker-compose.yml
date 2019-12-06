@@ -1,0 +1,18 @@
+version: '3'
+services:
+  # edit .env file
+  mysql-mariadb:
+    build: './'
+    hostname: internal-${HOST_NAME}
+    container_name: internal-${HOST_NAME}
+    env_file: ./.env
+    volumes:
+      - ../data/${HOST_NAME}/mysql:/var/lib/mysql
+      - ../run/${HOST_NAME}/mysqld:/var/run/mysqld
+    restart: unless-stopped # always
+    networks:
+      - phpmyadmin
+networks:
+  phpmyadmin:
+    external:
+      name: phpmyadmin
