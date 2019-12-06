@@ -1,16 +1,16 @@
 # Giới thiệu
-Repo này có khả năng phục vụ nhiều host trên các containers khác nhau của docker thông qua nginx làm proxy. Tất cả các containers này cùng chung một network là nginx-proxy
-
-# Sơ đồ ví dụ
-```
-Internet ---------> Nginx (docker) --------> php-fpm (docker)
-                         |
-                         |
-                         -------> nodejs (docker)
-```
-- hostname được đặt ở file .env của php.local và node.local
+Branch này thêm modsecurity vào nginx-proxy
 
 # Sử dụng
-1. Vào thư mục nginx-proxy: `docker-compose build && docker-compose up`
-2. Vào thư mục internal-php.local: `docker-compose build && docker-compose up`
-2. Vào thư mục internal-node.local: `docker-compose build && docker-compose up`
+Ghi đè vào thôi =))
+Sau đó, build lại và sửa config của nginx với từng site muốn sử dụng modsecurity:
+```
+server {
+    listen 80;
+    ...
+    server_tokens off;
+    modsecurity on;
+    modsecurity_rules_file /etc/nginx/modsec/default-rules.conf;
+    ...
+}
+```
