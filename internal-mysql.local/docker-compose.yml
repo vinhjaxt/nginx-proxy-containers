@@ -7,7 +7,7 @@ services:
     container_name: internal-${HOST_NAME}
     env_file: ./.env
     volumes:
-      - ../data/${HOST_NAME}/mysql:/var/lib/mysql
+      - ../data/${HOST_NAME}:/var/lib/mysql
       - ../run/${HOST_NAME}/mysqld:/var/run/mysqld
     restart: unless-stopped # always
     networks:
