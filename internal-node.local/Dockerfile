@@ -1,6 +1,6 @@
 FROM node:alpine
 
-RUN npm i -g yarn
+# RUN npm i -g yarn
 
 RUN apk add --no-cache tzdata
 ENV TZ Asia/Ho_Chi_Minh
