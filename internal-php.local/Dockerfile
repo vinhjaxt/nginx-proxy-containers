@@ -1,5 +1,9 @@
 FROM php:fpm-alpine
 
+RUN apk add --no-cache tzdata
+ENV TZ Asia/Ho_Chi_Minh
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 RUN apk add autoconf gcc make automake g++ make libffi-dev openssl-dev
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 RUN pecl install -o -f redis \
