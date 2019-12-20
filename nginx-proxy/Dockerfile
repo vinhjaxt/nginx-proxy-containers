@@ -1,4 +1,9 @@
 FROM nginx:alpine
+
+RUN apk add --no-cache tzdata
+ENV TZ Asia/Ho_Chi_Minh
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 # From: https://www.nginx.com/blog/compiling-and-installing-modsecurity-for-open-source-nginx/
 
 # Compile modsecurity
