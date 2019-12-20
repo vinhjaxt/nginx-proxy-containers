@@ -2,6 +2,10 @@ FROM node:alpine
 
 RUN npm i -g yarn
 
+RUN apk add --no-cache tzdata
+ENV TZ Asia/Ho_Chi_Minh
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 COPY ./app /opt/app
 WORKDIR /opt/app
 RUN yarn
