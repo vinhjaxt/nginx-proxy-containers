@@ -10,7 +10,7 @@ RUN mkdir 755 /opt/app
 WORKDIR /opt/app
 COPY ./app/package.json /opt/app/package.json
 RUN yarn install --production --no-lockfile
-COPY ./app /opt/app
+ADD ./app /opt/app
 
 ENV NODE_PATH=/usr/local/lib/node_modules:/usr/local/share/.config/yarn/global/node_modules
 
