@@ -36,3 +36,7 @@ networks:
   phpmyadmin:
     external:
       name: phpmyadmin
+#networks:
+#  default:
+#    external:
+#      name: nginx-proxy
