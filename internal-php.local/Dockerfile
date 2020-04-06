@@ -4,7 +4,7 @@ RUN apk add --no-cache tzdata
 ENV TZ Asia/Ho_Chi_Minh
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN apk add autoconf gcc make automake g++ make libffi-dev openssl-dev
+RUN apk add autoconf gcc make automake g++ make libffi-dev openssl-dev oniguruma-dev
 
 RUN docker-php-ext-install bcmath && docker-php-ext-enable bcmath
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
