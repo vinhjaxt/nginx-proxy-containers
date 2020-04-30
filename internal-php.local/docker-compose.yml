@@ -32,6 +32,14 @@ services:
     restart: unless-stopped # always
     networks:
       - phpmyadmin
+  memcached:
+    hostname: internal-memcached-${HOST_NAME}
+    container_name: internal-memcached-${HOST_NAME}
+    build: './memcached'
+    env_file: ./.env
+    volumes:
+      - ../run/${HOST_NAME}/memcached:/var/run/memcached
+    restart: unless-stopped # always
 networks:
   phpmyadmin:
     external:
